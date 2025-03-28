@@ -1,5 +1,6 @@
 package data.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -12,5 +13,6 @@ public interface SchedulesMapper {
 	//등록
 	public void scheduleInsert(Map<String,Object> map);
 	
-	
+	//전체 검색
+	public List<SchedulesDto> readAllSche();
 }

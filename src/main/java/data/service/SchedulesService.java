@@ -1,5 +1,6 @@
 package data.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,11 @@ public class SchedulesService {
 	
 	//일정 등록
 	public void scheduleInsert(Map<String, Object> map) {
-
     	schedulesMapper.scheduleInsert(map);
     }
+	
+	//전체 일정검색
+	public List<SchedulesDto> readAllSche(){
+		return schedulesMapper.readAllSche();
+	}
 }
