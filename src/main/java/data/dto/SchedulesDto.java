@@ -13,14 +13,16 @@ public class SchedulesDto {
     private int userId;
     private String content;
     private boolean isAlltime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
-    private Timestamp startTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
-    private Timestamp endTime;
+    private String sort;
+    
+    private String startTime; //HH:mm
+    private String endTime;//HH:mm
+    private String startDate;//yyyy-MM-dd
+    private String endDate;//yyyy-MM-dd
+    
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
-    private Timestamp startDate;
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
-    private Timestamp endDate;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private Timestamp createdAt;
+    
+    //작성자
+    private String writer;
 }

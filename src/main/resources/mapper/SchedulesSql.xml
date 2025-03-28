@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="data.mapper.SchedulesMapper">
-
+	<!-- 일정 등록 -->
+	<insert id="scheduleInsert" parameterType="map">
+		insert into schedules (userId,name,content,sort,isAlltime,startTime,endTime,startDate,endDate)
+		values (#{userId},#{name},#{content},#{sort},#{isAlltime},#{startTime},#{endTime},#{startDate},#{endDate})
+	</insert>
 </mapper>
