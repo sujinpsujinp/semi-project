@@ -7,8 +7,8 @@
 		values (#{userId},#{name},#{content},#{sort},#{isAlltime},#{startTime},#{endTime},#{startDate},#{endDate})
 	</insert>
 	
-	<!-- 전체 일정 검색 -->
+	<!-- 전체 일정 검색-->
 	<select id="readAllSche" resultType="SchedulesDto">
 		select * from schedules order by id
-	</select>
+	</select> 
 </mapper>

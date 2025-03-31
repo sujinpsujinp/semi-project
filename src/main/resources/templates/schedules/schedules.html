@@ -9,10 +9,12 @@
    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   
    <!-- 풀캘린더 사용하기위한 script -->
+   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css' rel='stylesheet'/>
    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script> 
-   <!-- 풀캘린더 상단 버튼 한글로 변경하기위한 스크립트 -->
-   <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/locales/ko.global.js"></script>  
+   <!-- 풀캘린더 상단 버튼 한글로 변경하기위한 스크립트-->
+   <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/locales/ko.global.js"></script> 
    <style>
        body *{
            font-family: 'Jua';
@@ -25,8 +27,23 @@
        }
        .modal-body td{
        		margin-left:5px;
-       }   
+       } 
 </style>
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  const scheduleList = /*[[${scheduleList}]]*/ [];
+
+  const events = scheduleList.map(s => {
+	  return {
+	    title: s.name,
+	    start: s.startDate.replace(' ', 'T'),
+	    end: s.endDate.replace(' ', 'T'),
+	    allDay: s.alltime
+	  };
+	});
+  /*]]>*/
+</script>
+
 <script>
       document.addEventListener('DOMContentLoaded', function() {    
     	var calendarEl = document.getElementById('calendar');
@@ -36,6 +53,7 @@
           editable:false,//드래그해서 수정 가능한지. 길게 확장도 가능
           dayMaxEvents:true,//+more 표시 전 최대 이벤트 갯수. true는 셀 높이에의해 결정
        	  selectable:true,//사용자가 클릭하고 드래그하여 선택할 수 있도록 함
+       	  events: events,
        	  
 			footerToolbar: {
 			      start: "timeGridDay,dayGridMonth,dayGridWeek",
@@ -47,6 +65,8 @@
    				center: 'title',
    				right: 'prev,next,listDay'
 			},
+			
+			
       		
       		//달력에서 '일' 글자 제거하는 내용
       		dayCellContent:function(info){
@@ -65,6 +85,7 @@
       		select: function(start, end) {
       		    openAddScheduleModal(start, end);
       		},
+      		
       		//일정등록버튼 노출시키기위한 영역
          	  customButtons: {
      			addSchedule: {
@@ -81,6 +102,7 @@
        			},
      		}
   			},
+  			
       		// 달력 빈 공간 클릭 시 모달 노출
             select: function(info) {
             	//const startDate = event.startStr;
@@ -92,8 +114,11 @@
                 // 모달 표시
                 var myModal = new bootstrap.Modal(document.getElementById('calAddModal'));
                 myModal.show();
-            }
+            },
+            
+            
         });
+        
         calendar.render();
         
         //등록 버튼 클릭 시 동작
@@ -114,7 +139,7 @@
     	      const endDateTime = endDate + ' ' + endTime + ':00';
     	      const userId = 1; // 현재는 임시로 고정값
     	      
-    	   // 유효성 검사
+    	   	  // 유효성 검사
     	      if (!startDate || !startTime || !endDate || !endTime) {
     	          alert("시작/종료 날짜와 시간을 모두 입력해주세요!");
     	          return;
@@ -145,6 +170,8 @@
     	        }
     	      });
     	    });
+    		
+    	
     	});
  </script>
 </head>
@@ -230,6 +257,5 @@
 
 <!-- 캘린더 출력 영역 -->
 <div id='calendar'></div>
-<h3>테스트</h3>
 </body>
 </html>

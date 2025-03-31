@@ -1,5 +1,7 @@
 package data.controller;
 
+import java.io.Console;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -9,17 +11,24 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.mysql.cj.xdevapi.JsonArray;
 
 import data.dto.SchedulesDto;
 import data.service.SchedulesService;
 import data.service.UsersService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -30,9 +39,11 @@ public class SchedulesController {
 	
 	//일정관리 페이지 진입
 	@GetMapping({"/schedules"})
-	public String schedulemain()
-	{
-		return "schedules/schedules";		
+	//@ResponseBody
+	public String scheduleMain(ModelMap model) {
+		List<SchedulesDto> list = schedulesService.readAllSche();
+	    model.addAttribute("scheduleList", list); // 일정 리스트 모델에 담기
+	    return "schedules/schedules"; // schedules.html 읽어오기
 	}
 	
 	//일정등록
@@ -79,7 +90,14 @@ public class SchedulesController {
             response.put("result", e.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
-		
+	}
+	
+	//전체 일정 조회
+	@GetMapping("/schedulelist")
+	@ResponseBody
+	public ResponseEntity<List<SchedulesDto>> getAllSchedules() {
+	    List<SchedulesDto> schedules = schedulesService.readAllSche();
+	    return new ResponseEntity<>(schedules, HttpStatus.OK);
 	}
 	
 	
