@@ -12,7 +12,7 @@ public class SchedulesDto {
     private String name;
     private int userId;
     private String content;
-    private boolean isAlltime;
+    private int isAlltime;
     private String sort;
     
     private String startTime; //HH:mm

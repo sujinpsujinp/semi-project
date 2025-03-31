@@ -24,4 +24,17 @@ public class SchedulesService {
 	public List<SchedulesDto> readAllSche(){
 		return schedulesMapper.readAllSche();
 	}
+	
+	//일정 하나 검색
+	public SchedulesDto readOneSche(int id)
+	{
+		return schedulesMapper.readOneSche(id);
+	}
+	
+	//일정 삭제
+	public void deleteSche(int id)
+	{
+		schedulesMapper.deleteSche(id);
+	}
+	
 }

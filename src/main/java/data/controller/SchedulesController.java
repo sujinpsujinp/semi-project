@@ -11,6 +11,7 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -73,7 +75,8 @@ public class SchedulesController {
 	        map.put("userId", dto.getUserId());
 	        map.put("name", dto.getName());
 	        map.put("content", dto.getContent());
-	        map.put("isAlltime", dto.isAlltime() ? 1 : 0);
+	        map.put("sort", dto.getSort());
+	        map.put("isAlltime", dto.getIsAlltime());
 	        map.put("startTime", startTimestamp);
 	        map.put("endTime", endTimestamp);
 	        map.put("startDate", dto.getStartDate());
@@ -100,5 +103,37 @@ public class SchedulesController {
 	    return new ResponseEntity<>(schedules, HttpStatus.OK);
 	}
 	
+	//일정 상세
+	@GetMapping("/scheDetail")
+	public String Detail(@RequestParam(value="id") int id,Model model)
+	{
+		SchedulesDto dto=schedulesService.readOneSche(id);
+		
+		System.out.println("isAlltime from DB: " + dto.getIsAlltime());
+		
+		//시작 날짜 및 시간 분리
+		String[] startDateParts = dto.getStartTime().split(" ");
+	    String startDate = startDateParts[0]; //2025-03-31 시작날짜
+		String startTime = startDateParts[1];//15:52 시작 시간
+	    
+		//종료 날짜 및 시간 분리
+		String[] endDateParts = dto.getEndTime().split(" ");
+		String endDate=endDateParts[0];
+		String endTime=endDateParts[1];
+	    
+		model.addAttribute("dto",dto);
+		model.addAttribute("StartDate", startDate); //시작날짜
+		model.addAttribute("StartTime",startTime); //시작 시간
+		model.addAttribute("endDate",endDate);//마감 날짜
+		model.addAttribute("endTime",endTime);//마감 시간
+		return "schedules/schedetail";
+	}
+	
+	//일정 삭제
+	@GetMapping("/scheDelete")
+	public ResponseEntity<Void> deleteSchedules(@RequestParam(value="id") int id) {
+	    schedulesService.deleteSche(id);
+	    return new ResponseEntity<>(HttpStatus.OK);
+	}
 	
 }

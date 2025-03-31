@@ -15,4 +15,10 @@ public interface SchedulesMapper {
 	
 	//전체 검색
 	public List<SchedulesDto> readAllSche();
+	
+	//일정 하나 검색
+	public SchedulesDto readOneSche(int id);
+	
+	//일정 삭제
+	public void deleteSche(int id);
 }

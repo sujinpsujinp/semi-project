@@ -10,5 +10,16 @@
 	<!-- 전체 일정 검색-->
 	<select id="readAllSche" resultType="SchedulesDto">
 		select * from schedules order by id
-	</select> 
+	</select>
+	
+	<!-- 일정 하나 조회 -->
+	<select id="readOneSche" parameterType="int" resultType="SchedulesDto">
+		select * from schedules where id=#{id}
+	</select>
+	
+	<!-- 일정 삭제 -->
+	<delete id="deleteSche" parameterType="int">
+		delete from schedules where id=#{id}
+	</delete>
+	
 </mapper>
