@@ -136,4 +136,38 @@ public class SchedulesController {
 	    return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	//일정 수정
+	@PostMapping("/scheUpdate")
+	public String scheduleUpdate(
+			@ModelAttribute SchedulesDto dto
+			)
+	{
+			//기존 저장된 날짜와 시간 불러오기
+			String startDate=dto.getStartDate();
+			String startTime=dto.getStartTime();
+			String endDate=dto.getEndDate();
+			String endTime=dto.getEndTime();
+			
+			String startTimeStr = startDate + " " + startTime;
+	        String endTimeStr = endDate + " " + endTime;
+
+	        // 초가 포함되어 있지 않으면 ":00" 추가
+	        if (!startTimeStr.matches(".*:\\d{2}:\\d{2}$")) {
+	            startTimeStr += ":00";
+	        }
+	        if (!endTimeStr.matches(".*:\\d{2}:\\d{2}$")) {
+	            endTimeStr += ":00";
+	        }
+	        Timestamp startTimestamp = Timestamp.valueOf(startTimeStr);
+	        Timestamp endTimestamp = Timestamp.valueOf(endTimeStr);
+	        
+	        // 필요시 dto에 다시 설정 가능
+	        dto.setStartTime(startTimeStr);
+	        dto.setEndTime(endTimeStr);
+	        
+			schedulesService.updateSchedule(dto);
+			
+			return "redirect:./scheDetail?id="+dto.getId();
+	}
+	
 }

@@ -21,4 +21,7 @@ public interface SchedulesMapper {
 	
 	//일정 삭제
 	public void deleteSche(int id);
+	
+	//일정 수정
+	public void updateSchedule(SchedulesDto dto);
 }

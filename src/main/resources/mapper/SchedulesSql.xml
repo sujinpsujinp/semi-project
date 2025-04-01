@@ -22,4 +22,10 @@
 		delete from schedules where id=#{id}
 	</delete>
 	
+	<!-- 일정 수정 -->
+	<update id="updateSchedule" parameterType="SchedulesDto">
+		update schedules 
+		set name=#{name},content=#{content},isAlltime=#{isAlltime},startTime=#{startTime},startDate=#{startDate},endDate=#{endDate},endTime=#{endTime},sort=#{sort}
+		where id=#{id}
+	</update>
 </mapper>

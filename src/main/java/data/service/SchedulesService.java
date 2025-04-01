@@ -37,4 +37,10 @@ public class SchedulesService {
 		schedulesMapper.deleteSche(id);
 	}
 	
+	//일정 수정
+	public void updateSchedule(SchedulesDto dto)
+	{
+		schedulesMapper.updateSchedule(dto);
+	}
+	
 }
