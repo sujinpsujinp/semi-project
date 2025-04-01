@@ -109,7 +109,7 @@ public class SchedulesController {
 	{
 		SchedulesDto dto=schedulesService.readOneSche(id);
 		
-		System.out.println("isAlltime from DB: " + dto.getIsAlltime());
+		//System.out.println("isAlltime from DB: " + dto.getIsAlltime());
 		
 		//시작 날짜 및 시간 분리
 		String[] startDateParts = dto.getStartTime().split(" ");

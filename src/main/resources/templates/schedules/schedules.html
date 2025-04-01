@@ -16,8 +16,9 @@
    <!-- 풀캘린더 상단 버튼 한글로 변경하기위한 스크립트-->
    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/locales/ko.global.js"></script> 
    
-   <script src="https://unpkg.com/@popperjs/core@2"></script><!-- tippy 사용 위찬 연결-->
-   <script src="https://unpkg.com/tippy.js@6"></script><!-- tippy 사용 위찬 연결-->
+   <!-- tippy 사용 위찬 연결-->
+   <script src="https://unpkg.com/@popperjs/core@2"></script>
+   <script src="https://unpkg.com/tippy.js@6"></script>
    <style>
        body *{
            font-family: 'Jua';
@@ -31,11 +32,13 @@
        .modal-body td{
        		margin-left:5px;
        }
+       
+       
        /* 토요일, 일요일 컬러 */
        .fc-day-sun a, .fc-day-sat a { 
   			color: red;
 		}
-		
+
 		/*버튼 크기 및 사이즈 설정*/
 		.fc .fc-button {
   			background-color: orange;
@@ -76,7 +79,8 @@
 	    sort: s.sort
 	  };
 	});
-  
+  	
+  	  //캘린더 출력 영역
       document.addEventListener('DOMContentLoaded', function() {    
     	var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -139,12 +143,14 @@
             	//console.log("Clicked event occurs: date = " + info.startStr);
             	// 선택한 날짜를 모달의 시작 날짜 필드에 설정
                 document.querySelector("input[name='startDate']").value = info.startStr;
+            	//선택한 날짜를 모달의 종료날짜에도 기본으로 노출되도록 설정
+            	document.querySelector("input[name='endDate']").value = info.startStr;
                 // 모달 표시
                 var myModal = new bootstrap.Modal(document.getElementById('calAddModal'));
                 myModal.show();
             },
-            
-          	//목록에서 마우스 오버시 tooltip 노출하기
+
+          	 //목록에서 마우스 오버시 tooltip 노출하기
     	   	eventDidMount: function (info) {
       			tippy(info.el, {
        				content: info.event.extendedProps.content,  // 이벤트 내용 가져오기
@@ -152,7 +158,7 @@
         			offset: [0, 0],
         			interactive: true,
       			});
-    		},
+    		}, 
     		
     		//일정 클릭 시 상세 페이지 이동
             eventClick: function(info) {
@@ -164,8 +170,22 @@
 			}
     		
         });
-        
         calendar.render();
+        
+        //'하루종일' 체크 시 시작시간, 종료 시간 00:00으로 설정 및 비활성화
+        $("input[name='isAlltime']").on("change", function () {
+            let isChecked = $(this).is(":checked");
+            let startTimeInput = $("input[name='startTime']");
+            let endTimeInput = $("input[name='endTime']");
+
+            if (isChecked) {
+                startTimeInput.val("00:00").prop("disabled", true);
+                endTimeInput.val("00:00").prop("disabled", true);
+            } else {
+                startTimeInput.val("").prop("disabled", false);
+                endTimeInput.val("").prop("disabled", false);
+            }
+        });
         
         //등록 버튼 클릭 시 동작
     	const registerBtn = document.querySelector("#calAddModal .scheAddbtn");
@@ -207,7 +227,7 @@
     	        success: function (response) {
     	          alert('일정이 등록되었습니다!');
     	          console.log(response);
-    	          calendar.refetchEvents(); // 필요시 일정 새로고침
+    	          location.reload();//등록 시 페이지 새로고침
     	        },
     	        error: function (xhr, status, error) {
     	          console.error('에러 발생:', error);
@@ -253,22 +273,22 @@
          	</tr>
          	<tr>
          		<th>일정 제목</th>
-         		<td>
+         		<td colspan="3">
          			<input class="form-control name" name="name" type="text">
          		</td>
          	</tr>
          	<tr>
          		<th>내용</th>
-         		<td>
+         		<td colspan="3">
          			<textarea class="form-control content" name="content" rows="2"></textarea>
          		</td>
          	</tr>
          	<tr>
          		<th>시작 날짜</th>
-         		<th>시작 시간</th>
          		<td>
          			<input class="form-control startDate" name="startDate" type="date">
          		</td>
+         		<th>시작 시간</th>
          		<td>
          			<input class="form-control startTime" name="startTime" type="time">
          		</td>
@@ -278,12 +298,14 @@
          		<td>
          			<input class="form-control endDate" name="endDate" type="date">
          		</td>
-         	</tr>
-         	<tr>
          		<th>종료 시간</th>
          		<td>
          			<input class="form-control endTime" name="endTime" type="time">
          		</td>
+         	</tr>
+         	<tr>
+         		
+         		
          	</tr>
          </table> 
       </div>
