@@ -32,6 +32,10 @@
        .modal-body td{
        		margin-left:5px;
        }
+       #scheTitle{
+    		width: 80%;
+    		margin: 20px auto;
+		}
        
        
        /* 토요일, 일요일 컬러 */
@@ -50,11 +54,12 @@
   			background-color:darkorange;
 		}
 
-		/* 버튼 클릭된 상태일 때 : 안먹음  */
-		.fc .fc-button:focus {
-  			background-color: orange;
+		/* 버튼 클릭된 상태일 때  */
+		.fc .fc-button-group > .fc-button.fc-button-active, .fc .fc-button-group > .fc-button:active, .fc .fc-button-group > .fc-button:focus, .fc .fc-button-group > .fc-button:hover 
+		{
+  			background-color: lightgray;
 		}
-		
+	
 		/* today 버튼 - 이번 달에 위치할 때 */
 		.fc .fc-today-button:disabled {
   			background-color: darkorange;
@@ -239,6 +244,7 @@
     	
     	});
  </script>
+ 
 </head>
 <body>
 <!-- 일정 추가 모달 -->
@@ -319,6 +325,21 @@
     </div>
   </div>
 </div> <!-- 일정 추가 모달 끝 -->
+
+<!-- 상단 타이틀 영역 -->
+<div id='scheTitle'>
+	<h2>Scheduler</h2>
+	<span style="color: gray;">오늘은 [[${#calendars.format(today, 'yyyy년 MM월 dd일')}]] 입니다.</span>
+	<div class="titleSort">
+		<a>전체 <input type="checkbox" class="private"></a>
+		<a style="color: green;">내 일정 <input type="checkbox" class="private"></a>
+		<a style="color: gray;">그룹 일정 <input type="checkbox" class="group"></a>
+		<a style="color: orange;">회사 일정 <input type="checkbox" class="company"></a>
+	</div>
+</div>
+<script th:inline="javascript">
+	
+</script>
 
 <!-- 캘린더 출력 영역 -->
 <div id='calendar'></div>

@@ -3,6 +3,7 @@ package data.controller;
 import java.io.Console;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,9 +42,10 @@ public class SchedulesController {
 	//일정관리 페이지 진입
 	@GetMapping({"/schedules"})
 	//@ResponseBody
-	public String scheduleMain(ModelMap model) {
+	public String scheduleMain(Model model) {
 		List<SchedulesDto> list = schedulesService.readAllSche();
 	    model.addAttribute("scheduleList", list); // 일정 리스트 모델에 담기
+	    model.addAttribute("today",new Date());
 	    return "schedules/schedules"; // schedules.html 읽어오기
 	}
 	
