@@ -14,25 +14,59 @@
 - 오하늬
 
 > ## Stacks
-### Environment
->![SPRINGBOOT].(https://img.shields.io/badge/SPRINGBOOT-F05032?style=for-the-badge&l9go=springboot&logoColor=white)
->![THYMLEAF].(https://img.shields.io/badge/thymleaf-F05032?style=for-the-badge&l9go=THYMLEAF&logoColor=white)
->![Git].(https://img.shields.io/badge/Git-F05032?style=for-the-badge&l9go=Git&logoColor=white)
->![GITHUB].(https://img.shields.io/badge/Git-F05032?style=for-the-badge&l9go=github&logoColor=white)
+>### Environment
+>![SPRINGBOOT](https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+>![THYMLEAF](https://img.shields.io/badge/thymleaf-005F0F?style=for-the-badge&logo=thymlef&logoColor=white)
+>![GIT](https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white)
+>![GTIHUB](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)
 
 >### Development
->![HIML5](https://ing.shields.io/badge/htn15-E34F26?style-for-the_badge8l9go=htn153l9goColor=white)
->![CSS3](https://img.shields.io/badge/thymeleaf-005FoF?style=for-the-badge&logo=css3&logoColor=white)
->![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white
+>![HTML5](https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+>![CSS3](https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+>![JAVASCRIPT](https://img.shields.io/badge/javascipt-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
 >![JAVA](https://img.shields.io/badge/java-FF7800?style=for-the-badge&logo=java&logoColor=white)
->![B00TSTRAP](https://ing.shields.io/badgs/bootstrap=795283?style=for-the-badge&1ogo=bootstrap&logoolor-white)
->![JQUFRY](https://img_shields.io/badge/jguery-0769AD?style=for-the-badge&logo=jguery&logoColor=white)
+>![BOOTSTRAP](https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+>![JQUERY](https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
 
 >### DB
->![MYSQL](https://img_shields.io/badge/mysql-0769AD?style=for-the-badge&logo=mysql&logoColor=white)
+>![MYSQL](https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
 >### CI/CD
->![JENKINS](https://img_shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
->![DOCKER](https://img.shields.io/badge/docker-4479A1?style=for-the-badge&logo=docker&logoColor=white)
+>![JENKINS](https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+>![DOCKER](https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
->### 
+>### 사용한 API 및 서비스
+>| API/서비스 | 목적 및 기능 |
+>|------|------|
+>| FullCalendar API | 달력 UI를 통해 일정목록 확인 |
+>| OpenWeather API | 메인 화면에서 날씨 정보 제공 |
+>| SSE | 결제, 쪽지, 일정 등록 시 실시간 알림 전송 |
+>| WebSocket | 실시간 채팅 및 채팅 도착 알림 기능 구현 |
+
+> ## 프로젝트 기능 구현
+> ### 전종원
+> - 인사관리
+>   - 관리자가 사용자의 인적사항을 기입하고 아이디 생성 됨
+>   - 사용자가 생성되며 기입된 메일 주소로 아이디와 비밀번호 전송
+>   - 부서별로 직원 인적사항 리스트 출력 및 인적사항 상세보기 기능
+>   - 인적사항은 관리자만 수정, 삭제 가능
+>   - 퇴사자 리스트는 관리자만 볼 수 있고 퇴사자 목록에서 삭제 시 DB에서도 삭제됨
+> - 부서 관리
+>   - 부서 목록 출력
+>   - 관리자만 부서/팀 등록,수정,삭제 가능
+> - 로그인
+> - 전자 결재
+>    - 관리자가 템플릿 및 결제 라인 생성
+>    - 결제라인은 제한없이 순서 지정 가능하고 조직원 검색 및 선택 할 수 있음
+>    - 기안자가 템플릿을 선택하면 내용, 결재자 목록을 불러옴
+>    - 제목, 내용, 파일 첨부해서 결재 기안
+>    - 결재자애 등록된 순서대로 결재 승인 가능
+>    - 최종 승인 후 상태가 '승인'으로 변경
+>    - 반려 사유를 작성하고 상태 '반려'로 변경
+>    - 기안자는 결재자 중 아무도 결재하지 않은 경우 회수 가능
+>    - 결재가 생성되면 첫 결재자한테 알림 발송, 본인의 차례가 되면 알림 발송
+>    - 최종 승인 혹은 반려 시 기안자에게 알림 생성
+>    - 기안을 올린 목록 확인 가능
+>    - 완료된 문서, 진행중인 문서, 결재 중인 문서 따로 목록 출력
+>    - 템플릿 제목과 기안자명으로 검색 가능
+>    - 결재 상세보기 기능(파일 다운로드)
