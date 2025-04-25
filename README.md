@@ -27,3 +27,12 @@
 >![JAVA](https://img.shields.io/badge/java-FF7800?style=for-the-badge&logo=java&logoColor=white)
 >![B00TSTRAP](https://ing.shields.io/badgs/bootstrap=795283?style=for-the-badge&1ogo=bootstrap&logoolor-white)
 >![JQUFRY](https://img_shields.io/badge/jguery-0769AD?style=for-the-badge&logo=jguery&logoColor=white)
+
+>### DB
+>![MYSQL](https://img_shields.io/badge/mysql-0769AD?style=for-the-badge&logo=mysql&logoColor=white)
+
+>### CI/CD
+>![JENKINS](https://img_shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+>![DOCKER](https://img.shields.io/badge/docker-4479A1?style=for-the-badge&logo=docker&logoColor=white)
+
+>### 
