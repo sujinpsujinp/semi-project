@@ -1,9 +1,10 @@
 > # 온담 프로젝트 설명
 > **배포 주소: http://223.130.151.54/** <br/> **개발기간: 2025.03.27 ~ 2025.04.16**<br/>
-> '온(모두)'과 '담(담다)'이 결합된 이름으로 모든 구성원미 함께 소통하고 협업할 수 있는 공간을 의미
+> "온(모두)"과 "담(담다)"이 결합된 이름으로 모든 구성원이 함께 소통하고 협업할 수 있는 공간을 의미
+> 
 > >1.업무 소통의 불편함을 해소하고 협업의 효율성을 높이는 것을 목표<br/>
-> >2.부서 간 경계를 허물고, 자뮤흡고 투명한 커뮤니케이션을 지원<br/>
-> >3. 업무 생산성 향상, 팀워크 증진, 더나은 조직 문화를 기대<br/>
+> >2.부서 간 경계를 허물고, 자유롭고 투명한 커뮤니케이션을 지원<br/>
+> >3. 업무 생산성 향상, 팀워크 증진, 더 나은 조직 문화를 기대<br/>
 
 > ## 팀원 소개
 - 전종원(팀장)
@@ -16,14 +17,14 @@
 > ## Stacks
 >### Environment
 >![SPRINGBOOT](https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
->![THYMLEAF](https://img.shields.io/badge/thymleaf-005F0F?style=for-the-badge&logo=thymlef&logoColor=white)
+>![THYMELEAF](https://img.shields.io/badge/thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white)
 >![GIT](https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white)
->![GTIHUB](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)
+>![GITHUB](https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white)
 
 >### Development
 >![HTML5](https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 >![CSS3](https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
->![JAVASCRIPT](https://img.shields.io/badge/javascipt-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
+>![JAVASCRIPT](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
 >![JAVA](https://img.shields.io/badge/java-FF7800?style=for-the-badge&logo=java&logoColor=white)
 >![BOOTSTRAP](https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 >![JQUERY](https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
@@ -44,6 +45,12 @@
 >| WebSocket | 실시간 채팅 및 채팅 도착 알림 기능 구현 |
 
 > ## 프로젝트 기능 구현
+> - 전종원: 인사관리, 부서관리, 로그인, 전자결재
+> - 김녹엽: 채팅, 채팅 알림
+> - 김동휘: 게시판
+> - 김준호: 쪽지, 자료실
+> - 박수진: 일정관리, 알림
+> - 오하늬: UI/UX, 마이페이지
 > ### 전종원
 > - 인사관리
 >   - 관리자가 사용자 인적사항 입력하여 아이디 생성
